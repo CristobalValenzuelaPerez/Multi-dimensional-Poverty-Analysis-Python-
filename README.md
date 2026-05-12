@@ -11,6 +11,13 @@ Traditional economics often measures poverty strictly through an income lens. Ho
 
 Using the **UK Time Use Survey (2014-2015)**, this Python engine processes over 335 raw variables to engineer a holistic index of resources, deploying both unsupervised and supervised Machine Learning algorithms to predict vulnerability to this two-dimensional poverty trap.
 
+## Data Source & Reproducibility
+The raw microdata utilized in this project is sourced from the **UK Time Use Survey (2014-2015)**. 
+Due to strict data governance and respondent privacy regulations, the raw `.dta` files are not included in this repository. 
+
+Researchers and analysts can request access to the original datasets directly through the official UK Data Service portal:
+🔗 [UK Data Service - UK Time Use Survey 2014-2015](https://datacatalogue.ukdataservice.ac.uk/studies/study/8128#details)
+
 ## Methodology & Machine Learning Pipeline
 
 ### 1. Feature Engineering & Data Wrangling (`Pandas`, `NumPy`)

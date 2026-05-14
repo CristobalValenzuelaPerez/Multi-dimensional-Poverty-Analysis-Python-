@@ -10,14 +10,14 @@ Traditional economics often measures poverty strictly through an income lens. Ho
 
 Using the **UK Time Use Survey (2014-2015)**, this analytical engine processes raw microdata to engineer a holistic index of resources, deploying a full pipeline of unsupervised clustering, rigorous econometrics, and supervised Machine Learning to predict vulnerability to this multidimensional poverty trap.
 
-<img width="348" height="262.8" alt="graph 1" src="https://github.com/user-attachments/assets/1f217988-12ce-4c75-b7f2-18ad81a4f851" />
+![Free Time vs Income Distribution](images/graph%201.png)
 
 ## Data Source & Reproducibility
 The raw microdata utilised in this project is sourced from the **UK Time Use Survey (2014-2015)**. 
 Due to strict data governance and respondent privacy regulations, the raw `.dta` files are not included in this repository. 
 
 Researchers and analysts can request access to the original datasets directly through the official UK Data Service portal:
-[UK Data Service - UK Time Use Survey 2014-2015](https://datacatalogue.ukdataservice.ac.uk/studies/study/8128#details)
+🔗 [UK Data Service - UK Time Use Survey 2014-2015](https://datacatalogue.ukdataservice.ac.uk/studies/study/8128#details)
 
 ## Methodology & Machine Learning Pipeline
 
@@ -30,8 +30,7 @@ Researchers and analysts can request access to the original datasets directly th
 * **Clustering (DBSCAN & K-Means):** Explored hidden cultural patterns affecting the gender division of unpaid work.
 * **UMAP Visualisation:** Reduced high-dimensional feature spaces into a 2D projection to visually validate cultural time-allocation behaviours.
 
-<img width="350" height="350" alt="graph UMAP Dimensionality Reduction" src="https://github.com/user-attachments/assets/c7a92d8a-4389-4a0c-b27d-055949c3a2bb" />
-
+![UMAP Dimensionality Reduction](images/graph%20UMAP%20Dimensionality%20Reduction.png)
 
 ### 3. Statistical Inference (`Statsmodels`)
 * **Multinomial Logistic Regression:** Evaluated the structural drivers of multidimensional poverty. Handled complete separation issues (Hauck-Donner effect) by applying a **General-to-Specific** modelling approach to isolate highly significant variables.
@@ -50,11 +49,13 @@ The econometric inference revealed that simultaneous time and income poverty is 
 2. **Material Assets:** The lack of time-saving appliances (e.g., Dishwashers) and the lack of personal transport (Vehicles) exponentially increase the likelihood of falling into the trap.
 3. **Household Structure:** Single parents with young children face the highest intersectional vulnerability, highlighting where public policy interventions (like subsidised childcare) would be most effective.
 
-<img width="501.14" height="210.24" alt="graph child04_HH&#39;, &#39;Infants in Household" src="https://github.com/user-attachments/assets/60db376b-7155-4892-bdf7-c5dcfb19d9cb" /> <img width="501.14" height="210.24" alt="graph VehOwn&#39;, &#39;Vehicle in Household" src="https://github.com/user-attachments/assets/81ec1b3e-e89b-4a26-9d4d-d5404cf0643a" />
-
+<p float="left">
+  <img src="images/graph%20child04_HH',%20'Infants%20in%20Household.png" width="49%" />
+  <img src="images/graph%20VehOwn',%20'Vehicle%20in%20Household.png" width="49%" />
+</p>
 
 ## Repository Structure
-* `multi_dimensional_poverty.ipynb`: The main Jupyter Notebook containing the full end-to-end code.
+* `PortfolioVersion_Time_Income_Poverty.ipynb`: The main Jupyter Notebook containing the full end-to-end code.
 * `requirements.txt`: List of dependencies required to reproduce the environment.
 * `/images/`: Directory containing EDA visualisations and UMAP plots used in this documentation.
 

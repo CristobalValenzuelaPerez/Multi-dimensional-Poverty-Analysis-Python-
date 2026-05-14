@@ -1,52 +1,72 @@
-# TIME & INCOME: A TWO-DIMENSIONAL APPROACH MEASURING POVERTY (Python)
+# TIME & INCOME: A TWO-DIMENSIONAL APPROACH TO MEASURING POVERTY
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg?style=flat-square&logo=python)](#)
 [![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Scikit--Learn%20%7C%20H2O-F7931E?style=flat-square)](#)
 [![Stats](https://img.shields.io/badge/Statistics-Statsmodels-8CA1AF?style=flat-square)](#)
 [![Status](https://img.shields.io/badge/Status-Completed-success?style=flat-square)](#)
 
-
 ## Project Objective
-Traditional economics often measures poverty strictly through an income lens. However, time—like money—is a finite resource. This project develops a robust mathematical framework to identify the **"Time-Income Trap"**: individuals who lack the monetary resources to buy services on the market, *and* lack the free time to perform unpaid care or domestic work themselves.
+Traditional economics often measures poverty strictly through an income lens. However, time—like money—is a finite, critical resource. This project develops a robust mathematical framework to identify the **"Time-Income Trap"**: individuals who lack the monetary resources to buy services on the market, *and* lack the free time to perform unpaid care or domestic work themselves.
 
-Using the **UK Time Use Survey (2014-2015)**, this Python engine processes over 335 raw variables to engineer a holistic index of resources, deploying both unsupervised and supervised Machine Learning algorithms to predict vulnerability to this two-dimensional poverty trap.
+Using the **UK Time Use Survey (2014-2015)**, this analytical engine processes raw microdata to engineer a holistic index of resources, deploying a full pipeline of unsupervised clustering, rigorous econometrics, and supervised Machine Learning to predict vulnerability to this multidimensional poverty trap.
+
+<img width="580" height="438" alt="graph 1" src="https://github.com/user-attachments/assets/1f217988-12ce-4c75-b7f2-18ad81a4f851" />
+
+![Free Time vs Income Distribution](images/graph%201.png)
 
 ## Data Source & Reproducibility
-The raw microdata utilized in this project is sourced from the **UK Time Use Survey (2014-2015)**. 
+The raw microdata utilised in this project is sourced from the **UK Time Use Survey (2014-2015)**. 
 Due to strict data governance and respondent privacy regulations, the raw `.dta` files are not included in this repository. 
 
 Researchers and analysts can request access to the original datasets directly through the official UK Data Service portal:
-[UK Data Service - UK Time Use Survey 2014-2015](https://datacatalogue.ukdataservice.ac.uk/studies/study/8128#details)
+🔗 [UK Data Service - UK Time Use Survey 2014-2015](https://datacatalogue.ukdataservice.ac.uk/studies/study/8128#details)
 
 ## Methodology & Machine Learning Pipeline
 
 ### 1. Feature Engineering & Data Wrangling (`Pandas`, `NumPy`)
-* Synthesized complex 24-hour diary entries into aggregated time-use categories (Personal Care, Employment, Unpaid Work, Commute).
+* Synthesised complex 24-hour diary entries into aggregated time-use categories (Personal Care, Employment, Unpaid Work).
 * Established **Relative Poverty Thresholds** (set at 60% of the median for both Free Time and Disposable Income).
 * Engineered a custom `free_time_income_index` to evaluate the intersectionality of deprivations.
 
-### 2. Statistical Inference (`Statsmodels`)
-* **Ordinary Least Squares (OLS):** Deployed to measure the impact of socio-demographic features on the time-income index, using Variance Inflation Factor (VIF) to handle multicollinearity.
-* **Multinomial Logistic Regression:** Identified key determinants that significantly increase the risk of falling into simultaneous time and income poverty (e.g., household structure, presence of infants, and ownership of time-saving appliances like tumble dryers).
-
-### 3. Unsupervised Learning & Dimensionality Reduction (`H2O`, `Scikit-Learn`, `UMAP`)
+### 2. Unsupervised Learning & Dimensionality Reduction (`H2O`, `Scikit-Learn`, `UMAP`)
 * **Clustering (DBSCAN & K-Means):** Explored hidden cultural patterns affecting the gender division of unpaid work.
-* **UMAP Visualization:** Reduced high-dimensional clustering outputs into a 2D space for visual validation of ethnic and cultural time-allocation behaviours.
+* **UMAP Visualisation:** Reduced high-dimensional feature spaces into a 2D projection to visually validate cultural time-allocation behaviours.
+
+<img width="700" height="700" alt="graph UMAP Dimensionality Reduction" src="https://github.com/user-attachments/assets/3cd0b21e-bdc7-4a45-9f9a-77fd6cc2d9fd" />
+
+![UMAP Dimensionality Reduction](images/graph%20UMAP%20Dimensionality%20Reduction.png)
+
+### 3. Statistical Inference (`Statsmodels`)
+* **Multinomial Logistic Regression:** Evaluated the structural drivers of multidimensional poverty. Handled complete separation issues (Hauck-Donner effect) by applying a **General-to-Specific** modelling approach to isolate highly significant variables.
+* **Diagnostics:** Conducted rigorous residual analysis (KDE and Q-Q plots) and multicollinearity checks (VIF) to ensure causal robustness.
 
 ### 4. Predictive Modelling (`Imbalanced-Learn`, `Scikit-Learn`)
-* **Data Balancing:** Addressed the highly imbalanced nature of the target variable (only ~2.8% of the sample was in the "Time & Income Poor" category) using **SMOTE** (Synthetic Minority Over-sampling Technique).
-* **Classification Models:** Trained and validated models to predict the likelihood of an individual falling into the poverty trap. 
-  * *Naïve Bayes:* 95.58% Accuracy
-  * *Decision Trees / Rule Induction:* **97.28% Accuracy**
+* **Data Balancing:** Addressed the highly imbalanced nature of the target variable (only ~2.8% of the sample in the "Time & Income Poor" trap) using **SMOTE** (Synthetic Minority Over-sampling Technique).
+* **Classification Models:** Trained rule-based and probabilistic classifiers to predict poverty trap vulnerability using the refined structural feature set. 
+  * *Naïve Bayes Accuracy:* 59.63%
+  * *Decision Tree (Rule Induction) Accuracy:* **77.67%** (achieving robust F1-Scores of 0.80 across balanced classes without overfitting).
 
-## Key Finding: The Poverty Gap
-While identifying the poor is critical, calculating the **Poverty Gap** provides actionable intelligence for public policy. 
-The algorithm revealed that individuals trapped in simultaneous time and income poverty would need an average of **£525.70 extra per month** to escape income deprivation. However, viewed from a time-need perspective, they only require an additional **6.35 hours of free time per week** to escape the trap. This highlights how targeted state interventions (like subsidised childcare or transport) can be highly cost-effective alternatives to direct monetary subsidies.
+## Key Findings: The Anatomy of the Poverty Trap
+The econometric inference revealed that simultaneous time and income poverty is not random, but deeply structural. The refined model identified highly significant predictors (p < 0.05):
+
+1. **The Gender & Care Burden:** Being female and having infants in the household are the strongest demographic drivers pushing individuals into extreme time poverty.
+2. **Material Assets:** The lack of time-saving appliances (e.g., Dishwashers) and the lack of personal transport (Vehicles) exponentially increase the likelihood of falling into the trap.
+3. **Household Structure:** Single parents with young children face the highest intersectional vulnerability, highlighting where public policy interventions (like subsidised childcare) would be most effective.
+
+<img width="1168" height="490" alt="graph child04_HH&#39;, &#39;Infants in Household" src="https://github.com/user-attachments/assets/60db376b-7155-4892-bdf7-c5dcfb19d9cb" />
+
+<img width="1168" height="490" alt="graph VehOwn&#39;, &#39;Vehicle in Household" src="https://github.com/user-attachments/assets/81ec1b3e-e89b-4a26-9d4d-d5404cf0643a" />
+
+
+<p float="left">
+  <img src="images/graph%20child04_HH',%20'Infants%20in%20Household.png" width="49%" />
+  <img src="images/graph%20VehOwn',%20'Vehicle%20in%20Household.png" width="49%" />
+</p>
 
 ## Repository Structure
 * `multi_dimensional_poverty.ipynb`: The main Jupyter Notebook containing the full end-to-end code.
-* `requirements.txt`: List of dependencies (h2o, umap-learn, imblearn, etc.)
-* `/images/`: Directory containing UMAP and correlation matrix plots.
+* `requirements.txt`: List of dependencies required to reproduce the environment.
+* `/images/`: Directory containing EDA visualisations and UMAP plots used in this documentation.
 
 ---
-*Developed by [Tu Nombre/Perfil de GitHub]*
+*Developed by Cristobal Valenzuela-Perez*

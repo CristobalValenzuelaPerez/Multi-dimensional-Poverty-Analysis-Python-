@@ -30,7 +30,7 @@ Researchers and analysts can request access to the original datasets directly th
 * **Clustering (DBSCAN & K-Means):** Explored hidden cultural patterns affecting the gender division of unpaid work.
 * **UMAP Visualisation:** Reduced high-dimensional feature spaces into a 2D projection to visually validate cultural time-allocation behaviours.
 
-<img width="348" height="348" alt="graph UMAP Dimensionality Reduction" src="https://github.com/user-attachments/assets/3cd0b21e-bdc7-4a45-9f9a-77fd6cc2d9fd" />
+<img width="262.8" height="262.8" alt="graph UMAP Dimensionality Reduction" src="https://github.com/user-attachments/assets/d6064c82-7634-4299-9ba4-1330d7fb0e40" />
 
 ### 3. Statistical Inference (`Statsmodels`)
 * **Multinomial Logistic Regression:** Evaluated the structural drivers of multidimensional poverty. Handled complete separation issues (Hauck-Donner effect) by applying a **General-to-Specific** modelling approach to isolate highly significant variables.
@@ -53,11 +53,6 @@ The econometric inference revealed that simultaneous time and income poverty is 
 
 <img width="626.43" height="262.8" alt="graph VehOwn&#39;, &#39;Vehicle in Household" src="https://github.com/user-attachments/assets/81ec1b3e-e89b-4a26-9d4d-d5404cf0643a" />
 
-
-<p float="left">
-  <img src="images/graph%20child04_HH',%20'Infants%20in%20Household.png" width="49%" />
-  <img src="images/graph%20VehOwn',%20'Vehicle%20in%20Household.png" width="49%" />
-</p>
 
 ## Repository Structure
 * `multi_dimensional_poverty.ipynb`: The main Jupyter Notebook containing the full end-to-end code.

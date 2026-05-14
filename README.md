@@ -58,9 +58,9 @@ The econometric inference revealed that simultaneous time and income poverty is 
 </p>
 
 ## Repository Structure
-* `PortfolioVersion_Time_Income_Poverty.ipynb`: The main Jupyter Notebook containing the full end-to-end code.
-* `requirements.txt`: List of dependencies required to reproduce the environment.
-* `/images/`: Directory containing EDA visualisations and UMAP plots used in this documentation.
+* [`PortfolioVersion_Time_Income_Poverty.ipynb`](PortfolioVersion_Time_Income_Poverty.ipynb): The main Jupyter Notebook containing the full end-to-end code.
+* [`requirements.txt`](requirements.txt): List of dependencies required to reproduce the environment.
+* [`/images/`](images/): Directory containing EDA visualisations and UMAP plots used in this documentation.
 
 ---
 *Developed by Cristobal Valenzuela-Perez*
